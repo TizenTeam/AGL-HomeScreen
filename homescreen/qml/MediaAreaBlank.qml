@@ -42,7 +42,7 @@ Image {
     Image {
     id: logo_image
         anchors.centerIn: parent
-        source: './images/Utility_Logo_Colour-01.png'
+        source: "./images/Utility_Logo_Colour-01.png"
     }
 
     Timer {

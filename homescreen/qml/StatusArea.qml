@@ -40,25 +40,33 @@ Item {
             Layout.preferredWidth: 295 - 76
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 40
+                anchors.margins: 20
                 spacing: 0
-                Text {
+
+                Image {
+                    id: dummy
+                    width:0
+                    height: 0
+                    cache: false
+                    property bool state: true
+                    source:  "http://localhost:8080/?query=" + state
+                }
+
+                Image {
+                    id: iotivity
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    text: Qt.formatDate(now, 'dddd').toUpperCase()
-                    font.family: 'Roboto'
-                    font.pixelSize: 13
-                    color: 'white'
-                    verticalAlignment:  Text.AlignVCenter
-//                    Rectangle {
-//                        anchors.fill: parent
-//                        anchors.margins: 5
-//                        color: 'red'
-//                        border.color: 'blue'
-//                        border.width: 1
-//                        z: -1
-//                    }
+                    Layout.preferredHeight: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    source: ( dummy.state )  ? "images/iotivity.png" : "./images/Utility_Logo_Colour-01.png"
+
                 }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: { dummy.state = ! dummy.state }
+                }
+
                 Text {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
